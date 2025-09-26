@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navigation-icon {
+    width: 30px;
+    height: 44px;
+}
