@@ -22,9 +22,9 @@
         <tbody>
             @forelse ($estados as $estado)
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                    <td class="px-6 py-4">{{ $estado->nombre }}</td>
-                    <td class="px-6 py-4">{{ $estado->descripcion ?? '-' }}</td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-white">{{ $estado->nombre }}</td>
+                    <td class="px-6 py-4 text-white">{{ $estado->descripcion ?? '-' }}</td>
+                    <td class="px-6 py-4 text-white">
                         <span class="px-3 py-1 text-xs font-semibold rounded-full
                             {{ $estado->activo ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' }}">
                             {{ $estado->activo ? 'Sí' : 'No' }}

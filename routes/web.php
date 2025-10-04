@@ -33,8 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('gestion')->group(function () {
-        Route::resource('unidades', UnidadMedidaController::class)->names('unidades_medida');
-        Route::resource('estados', EstadoInsumoController::class)->names('estados_insumo');
+        Route::resource('unidades', UnidadMedidaController::class)->names('unidades');
+        Route::resource('estados', EstadoInsumoController::class)->names('estados');
         Route::resource('categorias', CategoriaController::class)->names('categorias');
         Route::resource('proveedores', ProveedorController::class)->names('proveedores');
         Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');

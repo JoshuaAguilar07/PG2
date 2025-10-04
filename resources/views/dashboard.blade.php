@@ -60,7 +60,7 @@
                     Administra las unidades de medida para estandarizar insumos (ml, g, kit, etc.).
                 </p>
                 <div class="mt-4">
-                    <a href="{{ route('unidades_medida.index') }}"
+                    <a href="{{ route('unidades.index') }}"
                        class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-green-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
                         Ver Unidades
                     </a>
@@ -77,7 +77,7 @@
                     Define los estados de los insumos (disponible, agotado, reservado, vencido, dañado).
                 </p>
                 <div class="mt-4">
-                    <a href="{{ route('estados_insumo.index') }}"
+                    <a href="{{ route('estados.index') }}"
                        class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-500 to-red-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
                         Ver Estados
                     </a>
