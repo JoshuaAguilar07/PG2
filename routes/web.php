@@ -33,10 +33,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('gestion')->group(function () {
-        Route::resource('unidades', UnidadMedidaController::class)->names('unidades');
-        Route::resource('estados', EstadoInsumoController::class)->names('estados');
-        Route::resource('categorias', CategoriaController::class)->names('categorias');
-        Route::resource('proveedores', ProveedorController::class)->names('proveedores');
+        Route::resource('unidades', UnidadMedidaController::class)->names('unidades')->parameters(['unidades' => 'unidad']);
+        Route::resource('estados', EstadoInsumoController::class)->names('estados')->parameters(['estados' => 'estado']);
+        Route::resource('categorias', CategoriaController::class)->names('categorias')->parameters(['categorias' => 'categoria']);
+        Route::resource('proveedores', ProveedorController::class)->names('proveedores')->parameters(['proveedores' => 'proveedor']);
         Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')->parameters(['ubicaciones' => 'ubicacion']);
     });
 });

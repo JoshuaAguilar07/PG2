@@ -24,11 +24,11 @@
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse ($proveedores as $proveedor)
                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                        <td class="px-6 py-4">{{ $proveedor->nombre }}</td>
-                        <td class="px-6 py-4">{{ $proveedor->contacto ?? '—' }}</td>
-                        <td class="px-6 py-4">{{ $proveedor->email ?? '—' }}</td>
-                        <td class="px-6 py-4">{{ $proveedor->telefono ?? '—' }}</td>
-                        <td class="px-6 py-4 flex justify-center gap-2">
+                        <td class="px-6 py-4 text-white">{{ $proveedor->nombre }}</td>
+                        <td class="px-6 py-4 text-white">{{ $proveedor->contacto ?? '—' }}</td>
+                        <td class="px-6 py-4 text-white">{{ $proveedor->email ?? '—' }}</td>
+                        <td class="px-6 py-4 text-white">{{ $proveedor->telefono ?? '—' }}</td>
+                        <td class="px-6 py-4 text-white flex justify-center gap-2">
                             <a href="{{ route('proveedores.edit', $proveedor) }}"
                                class="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-lg text-xs font-semibold hover:bg-yellow-500 transition">
                                 Editar

@@ -22,9 +22,9 @@
         <tbody>
             @forelse ($unidades as $unidad)
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                    <td class="px-6 py-4">{{ $unidad->nombre }}</td>
-                    <td class="px-6 py-4">{{ $unidad->abreviatura }}</td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-white">{{ $unidad->nombre }}</td>
+                    <td class="px-6 py-4 text-white">{{ $unidad->abreviatura }}</td>
+                    <td class="px-6 py-4 text-white">
                         <span class="px-3 py-1 text-xs font-semibold rounded-full
                             {{ $unidad->activa ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' }}">
                             {{ $unidad->activa ? 'Sí' : 'No' }}

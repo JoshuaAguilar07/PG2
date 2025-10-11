@@ -48,7 +48,7 @@
 
             <!-- Activo -->
             <div class="flex items-center gap-2 mb-6">
-                <input type="checkbox" name="activo" checked class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <input type="checkbox" name="activo" value="1" checked class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
                 <label class="text-sm text-gray-700 dark:text-gray-300">Activo</label>
             </div>
 

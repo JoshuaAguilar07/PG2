@@ -28,14 +28,12 @@ class ProveedorController extends Controller
             'direccion' => 'nullable|string',
         ]);
 
-        Proveedor::create($request->all());
+        $data = $request->all();
+        $data['activo'] = $request->has('activo') ? 1 : 0; // <-- Convierte a 1 o 0
+
+        Proveedor::create($data);
 
         return redirect()->route('proveedores.index')->with('success', 'Proveedor creado correctamente');
-    }
-
-    public function edit(Proveedor $proveedor)
-    {
-        return view('proveedores.edit', compact('proveedor'));
     }
 
     public function update(Request $request, Proveedor $proveedor)
@@ -48,10 +46,18 @@ class ProveedorController extends Controller
             'direccion' => 'nullable|string',
         ]);
 
-        $proveedor->update($request->all());
+    $data = $request->all();
+    $data['activo'] = $request->has('activo') ? 1 : 0; // <-- Convierte a 1 o 0
 
-        return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado correctamente');
+    $proveedor->update($data);
+
+    return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado correctamente');
+}
+    public function edit(Proveedor $proveedor)
+    {
+        return view('proveedores.edit', compact('proveedor'));
     }
+
 
     public function destroy(Proveedor $proveedor)
     {
