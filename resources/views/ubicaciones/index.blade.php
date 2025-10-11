@@ -24,10 +24,10 @@
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse ($ubicaciones as $ubicacion)
                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                        <td class="px-6 py-4">{{ $ubicacion->nombre }}</td>
-                        <td class="px-6 py-4">{{ $ubicacion->descripcion ?? '—' }}</td>
-                        <td class="px-6 py-4">{{ $ubicacion->temperatura ?? '—' }}</td>
-                        <td class="px-6 py-4">{{ $ubicacion->capacidad ?? '—' }}</td>
+                        <td class="px-6 py-4 text-white">{{ $ubicacion->nombre }}</td>
+                        <td class="px-6 py-4 text-white">{{ $ubicacion->descripcion ?? '—' }}</td>
+                        <td class="px-6 py-4 text-white">{{ $ubicacion->temperatura ?? '—' }}</td>
+                        <td class="px-6 py-4 text-white">{{ $ubicacion->capacidad ?? '—' }}</td>
                         <td class="px-6 py-4 flex justify-center gap-2">
                             <a href="{{ route('ubicaciones.edit', $ubicacion) }}"
                                class="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-lg text-xs font-semibold hover:bg-yellow-500 transition">

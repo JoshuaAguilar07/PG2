@@ -42,8 +42,13 @@
 
             <!-- Activa -->
             <div class="flex items-center gap-2 mb-6">
-                <input type="checkbox" name="activa" {{ old('activa', $ubicacion->activa) ? 'checked' : '' }}
-                       class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <!-- Hidden input para enviar 0 si no está marcada -->
+                <input type="hidden" name="activa" value="0">
+
+                <input type="checkbox" name="activa" value="1"
+                                                     {{ old('activa', true) ? 'checked' : '' }}
+                                                     class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+
                 <label class="text-sm text-gray-700 dark:text-gray-300">Activa</label>
             </div>
 

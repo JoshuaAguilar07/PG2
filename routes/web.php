@@ -37,7 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('estados', EstadoInsumoController::class)->names('estados');
         Route::resource('categorias', CategoriaController::class)->names('categorias');
         Route::resource('proveedores', ProveedorController::class)->names('proveedores');
-        Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
+        Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')->parameters(['ubicaciones' => 'ubicacion']);
     });
 });
 
