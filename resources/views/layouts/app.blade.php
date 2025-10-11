@@ -42,54 +42,50 @@
                     </div>
                 </div>
             @endif
-
-            {{-- Éxito --}}
-            @if (session('success'))
-                <div
-                            x-data="{ show: true }"
-                            x-init="setTimeout(() => show = false, 4000)"
-                            x-show="show"
-                            x-transition
-                            class="max-w-3xl mx-auto mt-6 px-4 py-3 rounded-lg bg-green-100 border border-green-400 text-green-700 shadow"
-                            >
-                            {{ session('success') }}
-                </div>
-            @endif
-
-            {{-- Error general --}}
-            @if (session('error'))
-                <div
-                            x-data="{ show: true }"
-                            x-init="setTimeout(() => show = false, 5000)"
-                            x-show="show"
-                            x-transition
-                            class="max-w-3xl mx-auto mt-6 px-4 py-3 rounded-lg bg-red-100 border border-red-400 text-red-700 shadow"
-                            >
-                            {{ session('error') }}
-                </div>
-            @endif
-
-            {{-- Errores de validación --}}
-            @if ($errors->any())
-                <div
-                            x-data="{ show: true }"
-                            x-init="setTimeout(() => show = false, 6000)"
-                            x-show="show"
-                            x-transition
-                            class="max-w-3xl mx-auto mt-6 px-4 py-3 rounded-lg bg-red-100 border border-red-400 text-red-700 shadow"
-                            >
-                            <strong>Se encontraron errores:</strong>
-                            <ul class="mt-2 list-disc list-inside text-sm">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                </div>
-            @endif
             <!-- Page Content -->
             <main>
                 @yield('content')
             </main>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+
+                document.addEventListener('DOMContentLoaded', function () {
+
+                    // Éxito
+                    @if (session('success'))
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: '{{ session('success') }}',
+                            showConfirmButton: false,
+                            timer: 2500,
+                            timerProgressBar: true,
+                        });
+                    @endif
+
+                    // Error general
+                    @if (session('error'))
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: '{{ session('error') }}',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Entendido',
+                        });
+                    @endif
+
+                    // Errores de validación
+                    @if ($errors->any())
+                        let errorList = `{!! implode('<br>', $errors->all()) !!}`;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Errores de validación',
+                        html: errorList,
+                        confirmButtonText: 'Corregir',
+                    });
+                @endif
+                });
+            </script>
             @yield('scripts')
         </div>
     </body>
