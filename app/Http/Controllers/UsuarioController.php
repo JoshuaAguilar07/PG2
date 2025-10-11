@@ -109,4 +109,7 @@ class UsuarioController extends Controller
         $usuario->update(['activo' => false]);
         return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente');
     }
+
+
+
 }
