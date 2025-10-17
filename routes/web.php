@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EstadoInsumoController;
+use App\Http\Controllers\InsumoController;
+use App\Http\Controllers\LoteController;
+use App\Http\Controllers\MovimientoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\TipoMovimientoController;
 use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\UnidadMedidaController;
 use App\Http\Controllers\UsuarioController;
@@ -34,11 +38,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('gestion')->group(function () {
+        Route::resource('insumos', InsumoController::class)->names('insumos')->parameters(['insumos' => 'insumo']);
+        Route::resource('tipos_movimiento', TipoMovimientoController::class)->names('tipos_movimiento')->parameters(['tipos_movimiento' => 'tipo_movimiento']);
         Route::resource('unidades', UnidadMedidaController::class)->names('unidades')->parameters(['unidades' => 'unidad']);
         Route::resource('estados', EstadoInsumoController::class)->names('estados')->parameters(['estados' => 'estado']);
         Route::resource('categorias', CategoriaController::class)->names('categorias')->parameters(['categorias' => 'categoria']);
         Route::resource('proveedores', ProveedorController::class)->names('proveedores')->parameters(['proveedores' => 'proveedor']);
         Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')->parameters(['ubicaciones' => 'ubicacion']);
+        Route::get('movimientos/historial', [MovimientoController::class, 'historial'])->name('movimientos.historial');
+        Route::resource('movimientos', MovimientoController::class)->names('movimientos')->parameters(['movimientos' => 'movimiento']);
+        Route::resource('lotes', LoteController::class)->names('lotes')->parameters(['lotes' => 'lote']);
     });
 });
 

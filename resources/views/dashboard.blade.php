@@ -135,6 +135,58 @@
                 </div>
             </div>
 
+            <!-- Insumos -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 hover:shadow-lg transition">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Insumos</h2>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    Administra los insumos del sistema, incluyendo detalles como cantidad, estado y ubicación.
+                </p>
+                <div class="mt-4">
+                    <a href="{{ route('insumos.index') }}"
+                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-300 to-indigo-500 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                        Ver Insumos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tipo de movimientos -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 hover:shadow-lg transition">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Tipos de Movimiento</h2>
+                    <span class="bg-stone-100 text-stone-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    Define los tipos de movimientos de insumos (entrada, salida, transferencia, ajuste).
+                </p>
+                <div class="mt-4">
+                    <a href="{{ route('tipos_movimiento.index') }}"
+                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-stone-300 to-stone-500 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                        Ver Tipos de Movimiento
+                    </a>
+                </div>
+            </div>
+
+
+
+            <!-- Movimientos -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 hover:shadow-lg transition">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Movimientos</h2>
+                    <span class="bg-stone-100 text-stone-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    Gestiona los movimientos de inventario para rastrear entradas y salidas de insumos.
+                </p>
+                <div class="mt-4">
+                    <a href="{{ route('movimientos.index') }}"
+                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-rose-700 to-rose-900 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                        Ver Movimientos
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
