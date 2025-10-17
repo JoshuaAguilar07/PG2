@@ -36,6 +36,14 @@
         </div>
     </form>
 
+    <div class="flex justify-end mb-4">
+        <a href="{{ route('movimientos.pdf', request()->query()) }}"
+           class="bg-gradient-to-r from-red-500 to-red-700 text-white px-5 py-2 rounded-lg shadow hover:opacity-90"
+           target="_blank">
+           <i class="fas fa-file-pdf mr-2"></i> Exportar a PDF
+        </a>
+    </div>
+
     <!-- Tabla -->
     <div class="overflow-x-auto">
         <table class="min-w-full text-sm text-left border dark:border-gray-700 rounded-lg">

@@ -10,6 +10,7 @@ use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MovimientoController extends Controller
 {
@@ -102,6 +103,30 @@ class MovimientoController extends Controller
         $movimientos = $query->paginate(20);
 
         return view('movimientos.historial', compact('movimientos', 'insumos'));
+    }
+
+    public function generarPDF(Request $request)
+    {
+        $insumos = \App\Models\Insumo::all();
+
+        $query = Movimiento::with(['tipo', 'insumo', 'usuario', 'ubicacion'])
+            ->orderBy('fecha_movimiento', 'desc');
+
+        if ($request->filled('insumo_id')) {
+            $query->where('insumo_id', $request->insumo_id);
+        }
+        if ($request->filled('desde')) {
+            $query->whereDate('fecha_movimiento', '>=', $request->desde);
+        }
+        if ($request->filled('hasta')) {
+            $query->whereDate('fecha_movimiento', '<=', $request->hasta);
+        }
+
+        $movimientos = $query->get();
+        $fecha = now()->format('d/m/Y H:i');
+
+        $pdf = Pdf::loadView('movimientos.reporte_pdf', compact('movimientos', 'fecha'));
+        return $pdf->stream('reporte_kardex.pdf'); // también puedes usar ->download('reporte.pdf')
     }
 
 

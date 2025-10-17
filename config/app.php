@@ -97,6 +97,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'PDF' => \Barryvdh\DomPDF\Facade\Pdf::class,
+
     'key' => env('APP_KEY'),
 
     'previous_keys' => [

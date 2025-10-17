@@ -46,6 +46,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('proveedores', ProveedorController::class)->names('proveedores')->parameters(['proveedores' => 'proveedor']);
         Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')->parameters(['ubicaciones' => 'ubicacion']);
         Route::get('movimientos/historial', [MovimientoController::class, 'historial'])->name('movimientos.historial');
+        Route::get('/movimientos/reporte/pdf', [MovimientoController::class, 'generarPDF'])->name('movimientos.pdf');
         Route::resource('movimientos', MovimientoController::class)->names('movimientos')->parameters(['movimientos' => 'movimiento']);
         Route::resource('lotes', LoteController::class)->names('lotes')->parameters(['lotes' => 'lote']);
     });

@@ -163,7 +163,7 @@
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('tipos_movimiento.index') }}"
-                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-stone-300 to-stone-500 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-stone-500 to-stone-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
                         Ver Tipos de Movimiento
                     </a>
                 </div>
@@ -174,16 +174,33 @@
             <!-- Movimientos -->
             <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 hover:shadow-lg transition">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Movimientos</h2>
-                    <span class="bg-stone-100 text-stone-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Inventario</h2>
+                    <span class="bg-rose-100 text-rose-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Gestiona los movimientos de inventario para rastrear entradas y salidas de insumos.
+                    Registra y gestiona los movimientos de insumos en el inventario del sistema.
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('movimientos.index') }}"
                        class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-rose-700 to-rose-900 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
-                        Ver Movimientos
+                        Inventario
+                    </a>
+                </div>
+            </div>
+
+            <!-- Historial Movimientos -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 hover:shadow-lg transition">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Historial de Movimientos</h2>
+                    <span class="bg-lime-100 text-lime-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    Consulta el historial completo de movimientos de insumos en el inventario del sistema.
+                </p>
+                <div class="mt-4">
+                    <a href="{{ route('movimientos.historial') }}"
+                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-lime-500 to-lime-800 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                        Historial de Movimientos
                     </a>
                 </div>
             </div>
