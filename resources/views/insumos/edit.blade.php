@@ -12,7 +12,7 @@
             <!-- Nombre -->
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
-                <input type="text" name="nombre" value="{{ old('nombre') }}"
+                <input type="text" name="nombre" value="{{ $insumo->nombre }}"
                                                  class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                 @error('nombre') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
@@ -21,13 +21,13 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descripción</label>
                 <textarea name="descripcion" rows="3"
-                    class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">{{ old('descripcion') }}</textarea>
+                    class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">{{ $insumo->descripcion }}</textarea>
             </div>
 
             <!-- Código de barras -->
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Código de Barras</label>
-                <input type="text" name="codigo_barras" value="{{ old('codigo_barras') }}"
+                <input type="text" name="codigo_barras" value="{{ $insumo->codigo_barras }}"
                     class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
 
@@ -39,9 +39,11 @@
                         class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                         <option value="">Seleccione una categoría</option>
                         @foreach($categorias as $cat)
-                            <option value="{{ $cat->id }}" {{ old('categoria_id') == $cat->id ? 'selected' : '' }}>
-                                {{ $cat->nombre }}
-                            </option>
+                            @if($insumo->categoria_id == $cat->id)
+                                <option value="{{ $cat->id }}" selected>{{ $cat->nombre }}</option>
+                            @else
+                                <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -51,9 +53,11 @@
                         class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                         <option value="">Seleccione una unidad</option>
                         @foreach($unidades as $u)
-                            <option value="{{ $u->id }}" {{ old('unidad_medida_id') == $u->id ? 'selected' : '' }}>
-                                {{ $u->nombre }}
-                            </option>
+                            @if($insumo->unidad_medida_id == $u->id)
+                                <option value="{{ $u->id }}" selected>{{ $u->nombre }}</option>
+                            @else
+                                <option value="{{ $u->id }}">{{ $u->nombre }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -67,9 +71,11 @@
                         class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                         <option value="">Seleccione un proveedor</option>
                         @foreach($proveedores as $p)
-                            <option value="{{ $p->id }}" {{ old('proveedor_id') == $p->id ? 'selected' : '' }}>
-                                {{ $p->nombre }}
-                            </option>
+                            @if($insumo->proveedor_id == $p->id)
+                                <option value="{{ $p->id }}" selected>{{ $p->nombre }}</option>
+                            @else
+                                <option value="{{ $p->id }}">{{ $p->nombre }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -79,9 +85,11 @@
                         class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                         <option value="">Seleccione un estado</option>
                         @foreach($estados as $e)
-                            <option value="{{ $e->id }}" {{ old('estado_id') == $e->id ? 'selected' : '' }}>
-                                {{ $e->nombre }}
-                            </option>
+                            @if($insumo->estado_id == $e->id)
+                                <option value="{{ $e->id }}" selected>{{ $e->nombre }}</option>
+                            @else
+                                <option value="{{ $e->id }}">{{ $e->nombre }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -91,12 +99,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Stock Mínimo</label>
-                    <input type="number" name="stock_minimo" value="{{ old('stock_minimo', 0) }}"
+                    <input type="number" name="stock_minimo" value="{{ $insumo->stock_minimo ?? 0 }}"
                         class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Stock Máximo</label>
-                    <input type="number" name="stock_maximo" value="{{ old('stock_maximo', 0) }}"
+                    <input type="number" name="stock_maximo" value="{{ $insumo->stock_maximo ?? 0 }}"
                         class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                 </div>
             </div>
@@ -104,22 +112,22 @@
             <!-- Temperatura -->
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Temperatura de Almacenamiento</label>
-                <input type="text" name="temperatura_almacenamiento" value="{{ old('temperatura_almacenamiento') }}"
+                <input type="text" name="temperatura_almacenamiento" value="{{ $insumo->temperatura_almacenamiento }}"
                     class="mt-1 w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
 
             <!-- Checkboxes -->
             <div class="flex gap-6 mb-6">
                 <label class="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                    <input type="checkbox" name="lote_requerido" value="1" class="rounded text-blue-600" checked>
+                    <input type="checkbox" name="lote_requerido" value="{{$insumo->lote_requerido ?? 1}}" class="rounded text-blue-600" checked>
                     <span class="ml-2">Lote Requerido</span>
                 </label>
                 <label class="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                    <input type="checkbox" name="caducidad_requerida" value="1" class="rounded text-blue-600" checked>
+                    <input type="checkbox" name="caducidad_requerida" value="{{$insumo->caducidad_requerida ?? 1}}" class="rounded text-blue-600" checked>
                     <span class="ml-2">Caducidad Requerida</span>
                 </label>
                 <label class="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                    <input type="checkbox" name="activo" value="1" class="rounded text-blue-600" checked>
+                    <input type="checkbox" name="activo" value="{{$insumo->activo ?? 1}}" class="rounded text-blue-600" checked>
                     <span class="ml-2">Activo</span>
                 </label>
             </div>

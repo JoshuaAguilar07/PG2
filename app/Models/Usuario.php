@@ -18,7 +18,8 @@ class Usuario extends Authenticatable
         'username',
         'password_hash',
         'rol_id',
-        'activo'
+        'activo',
+        'photo'
     ];
 
     const CREATED_AT = 'fecha_creacion';

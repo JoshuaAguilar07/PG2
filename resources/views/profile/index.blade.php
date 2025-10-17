@@ -8,6 +8,19 @@
         </h1>
 
         <div class="space-y-4">
+            {{-- photo --}}
+            <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Foto de perfil</p>
+                @if ($user->photo)
+                    <img src="data:image/jpeg;base64,{{ $user->photo }}"
+                         alt="Foto de usuario"
+                         class="w-24 h-24 rounded-full object-cover border border-gray-400 dark:border-gray-600  mt-2">
+                @else
+                    <p class="text-lg font-semibold text-gray-800 dark:text-gray-100 mt-2">
+                        No hay foto de perfil.
+                    </p>
+                @endif
+            </div>
             <div>
                 <p class="text-sm text-gray-500 dark:text-gray-400">Nombre completo</p>
                 <p class="text-lg font-semibold text-gray-800 dark:text-gray-100">
@@ -28,6 +41,15 @@
                     {{ $user->username }}
                 </p>
             </div>
+            <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Rol</p>
+                <p class="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                    {{ $user->rol['nombre'] }}
+                </p>
+            </div>
+
+
+
         </div>
 
         <div class="mt-6 flex justify-end">

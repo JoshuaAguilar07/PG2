@@ -81,6 +81,7 @@ class UsuarioController extends Controller
             'email' => 'required|email|unique:usuarios,email,' . $usuario->id,
             'username' => 'required|string|max:50|unique:usuarios,username,' . $usuario->id,
             'rol_id' => 'required|exists:roles,id',
+            'photo' => 'nullable|image|max:2048', // 👈 valida la imagen (2MB máx)
         ]);
 
         $data = [
@@ -94,6 +95,11 @@ class UsuarioController extends Controller
 
         if ($request->filled('password')) {
             $data['password_hash'] = Hash::make($request->password);
+        }
+
+        // 🔹 Guardar imagen si se sube una nueva
+        if ($request->hasFile('photo')) {
+            $data['photo'] = base64_encode(file_get_contents($request->file('photo')->getRealPath()));
         }
 
         $usuario->update($data);
