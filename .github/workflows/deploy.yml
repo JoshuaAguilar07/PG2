@@ -1,0 +1,43 @@
+name: 🚀 Deploy Laravel to DigitalOcean Droplet
+
+on:
+  push:
+    branches:
+      - development
+      # - main  # ajusta si usas otra rama
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔐 Deploy via SSH to Droplet
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            echo "==== 🚀 START DEPLOY ===="
+            cd /home/dev/Inmunolab || exit
+
+            echo "📦 Fetching latest code..."
+            git fetch origin development
+            git reset --hard origin/development
+
+            echo "📂 Installing dependencies..."
+            composer install --no-dev --optimize-autoloader
+
+            echo "⚙️ Clearing and caching config..."
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan route:clear
+            php artisan view:clear
+
+            echo "📁 Running migrations..."
+            php artisan migrate --force || true
+
+            echo "🔄 Restarting Laravel (PM2)..."
+            pm2 restart laravel_app || pm2 start "php artisan serve --host=0.0.0.0 --port=8030" --name laravel_app
+
+            echo "✅ DEPLOY FINISHED SUCCESSFULLY ===="
