@@ -27,7 +27,7 @@ jobs:
 
             echo "📂 Installing dependencies..."
             composer install --no-dev --optimize-autoloader
-
+            composer update 
             echo "⚙️ Clearing and caching config..."
             php artisan config:clear
             php artisan cache:clear
