@@ -26,7 +26,6 @@ jobs:
             git reset --hard origin/development
 
             echo "📂 Installing dependencies..."
-            composer install --no-dev --optimize-autoloader
             composer update 
             echo "⚙️ Clearing and caching config..."
             php artisan config:clear
