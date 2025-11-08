@@ -18,16 +18,22 @@
                     <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Administra los usuarios del sistema, asigna roles y activa o desactiva accesos.
+                Administra los usuarios del sistema, asigna roles y activa o desactiva accesos.
                 </p>
                 <div class="mt-4">
-                    <a href="{{ route('usuarios.index') }}"
-                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
-                        Ver Usuarios
-                    </a>
+                    @if ($is_admin)
+                        <a href="{{ route('usuarios.index') }}"
+                           class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                            Ver Usuarios
+                        </a>
+                    @else
+                        <button disabled
+                                class="inline-flex items-center px-4 py-2 bg-gray-300 text-gray-500 text-sm font-semibold rounded-lg cursor-not-allowed opacity-70">
+                            Sin permisos
+                        </button>
+                    @endif
                 </div>
             </div>
-
             <!-- Gestión de Roles -->
             <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 hover:shadow-lg transition">
                 <div class="flex items-center justify-between">
@@ -35,13 +41,20 @@
                     <span class="bg-purple-100 text-purple-700 text-xs font-medium px-2.5 py-0.5 rounded">Seguridad</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Define y gestiona los roles del sistema para controlar el acceso de los usuarios.
+                Define y gestiona los roles del sistema para controlar el acceso de los usuarios.
                 </p>
                 <div class="mt-4">
-                    <a href="{{ route('roles.index') }}"
-                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
-                        Ver Roles
-                    </a>
+                    @if ($is_admin)
+                        <a href="{{ route('roles.index') }}"
+                           class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white text-sm font-semibold rounded-lg shadow hover:opacity-90">
+                            Ver Roles
+                        </a>
+                    @else
+                        <button disabled
+                                class="inline-flex items-center px-4 py-2 bg-gray-300 text-gray-500 text-sm font-semibold rounded-lg cursor-not-allowed opacity-70">
+                            Sin permisos
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -57,7 +70,7 @@
                     <span class="bg-green-100 text-green-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Administra las unidades de medida para estandarizar insumos (ml, g, kit, etc.).
+                Administra las unidades de medida para estandarizar insumos (ml, g, kit, etc.).
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('unidades.index') }}"
@@ -74,7 +87,7 @@
                     <span class="bg-red-100 text-red-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Define los estados de los insumos (disponible, agotado, reservado, vencido, dañado).
+                Define los estados de los insumos (disponible, agotado, reservado, vencido, dañado).
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('estados.index') }}"
@@ -91,7 +104,7 @@
                     <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Clasifica los insumos en categorías como reactivos, equipos y materiales.
+                Clasifica los insumos en categorías como reactivos, equipos y materiales.
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('categorias.index') }}"
@@ -108,7 +121,7 @@
                     <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Administra los proveedores con datos de contacto y asigna insumos a ellos.
+                Administra los proveedores con datos de contacto y asigna insumos a ellos.
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('proveedores.index') }}"
@@ -125,7 +138,7 @@
                     <span class="bg-teal-100 text-teal-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Define y gestiona las ubicaciones de almacenamiento (refrigeradores, estanterías, etc.).
+                Define y gestiona las ubicaciones de almacenamiento (refrigeradores, estanterías, etc.).
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('ubicaciones.index') }}"
@@ -142,7 +155,7 @@
                     <span class="bg-indigo-100 text-indigo-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Administra los insumos del sistema, incluyendo detalles como cantidad, estado y ubicación.
+                Administra los insumos del sistema, incluyendo detalles como cantidad, estado y ubicación.
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('insumos.index') }}"
@@ -159,7 +172,7 @@
                     <span class="bg-stone-100 text-stone-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Define los tipos de movimientos de insumos (entrada, salida, transferencia, ajuste).
+                Define los tipos de movimientos de insumos (entrada, salida, transferencia, ajuste).
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('tipos_movimiento.index') }}"
@@ -178,7 +191,7 @@
                     <span class="bg-rose-100 text-rose-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Registra y gestiona los movimientos de insumos en el inventario del sistema.
+                Registra y gestiona los movimientos de insumos en el inventario del sistema.
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('movimientos.index') }}"
@@ -195,7 +208,7 @@
                     <span class="bg-lime-100 text-lime-700 text-xs font-medium px-2.5 py-0.5 rounded">Gestión</span>
                 </div>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Consulta el historial completo de movimientos de insumos en el inventario del sistema.
+                Consulta el historial completo de movimientos de insumos en el inventario del sistema.
                 </p>
                 <div class="mt-4">
                     <a href="{{ route('movimientos.historial') }}"
