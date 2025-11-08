@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        // get rol
+        $user = auth()->user();
+        // user have a property called id_rol, please compare with a ROL_ADMIN in .env
+        $is_admin = $user->rol_id == env('ROL_ADMINISTRADOR') ? true : false;
+        return view('dashboard', compact('is_admin'));
     })->name('dashboard');
 
     // Redirección de raíz al dashboard
